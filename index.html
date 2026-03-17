@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浙江恩洁海运有限公司</title>
+    <!-- 引入 Bootstrap 5 CSS -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0066a1;
+            --light-blue: #e3f2fd;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: var(--primary-blue) !important;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #0066a1 0%, #0099cc 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+            z-index: 1;
+        }
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        .ship-card, .notice-item {
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+        }
+        .ship-card:hover, .notice-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .ship-image-container {
+            height: 250px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .ship-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ship-image-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+        }
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        .table-sm th, .table-sm td {
+            padding: 0.5rem;
+        }
+        .notice-item a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+        .notice-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 (已移除登录相关元素) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">浙江恩洁海运</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">关于我们</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ships">船舶展示</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#notice">公示栏</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="display-4 mb-3">安全 高效 环保</h1>
+            <p class="lead">浙江恩洁海运有限公司 —— 您可靠的国内沿海及长江珠江流域货物运输合作伙伴</p>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">关于我们</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>公司全称：</strong>浙江恩洁海运有限公司</p>
+                    <p><strong>成立时间：</strong>2017年10月13日</p>
+                    <p><strong>公司地址：</strong>温州市洞头区大门镇保健巷1号</p>
+                    <p><strong>企业规模与性质：</strong>小型企业 / 民营企业</p>
+                    <p><strong>法人代表：</strong>杨定国</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>相关资质：</strong>水路运输许可、安全管理体系符合证明。</p>
+                    <p><strong>公司简介：</strong> 我司成立于2017年10月13日，并于2018年8月9日取得浙江省港航管理局签发的国内水路运输经营许可证，公司注册资本1000万，主营国内沿海、长江中下游及珠江三角洲普通货船运输。</p>
+                    <p>公司实行总经理负责制，下设海务部、机务部、人事部、体系部、业务部五个部门。现拥有散货船5艘，合计运力达179,328载重吨。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 船舶展示栏 -->
+    <section id="ships" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">我们的船队</h2>
+            <p class="text-center text-muted mb-4">公司现有散货船5艘，合计运力载重吨179,328吨。</p>
+            <div id="shipList">
+                <!-- 船舶卡片将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 公示栏 (已移除上传面板和删除按钮) -->
+    <section id="notice" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">公示栏</h2>
+            <div class="row">
+                <div class="col-12">
+                    <h4>最新公示</h4>
+                    <div id="noticeList" class="mb-4">
+                        <!-- 公示条目1：总经理安全与防污染承诺书 -->
+                        <div class="notice-item card p-3 mb-3">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">总经理安全与防污染承诺书</h5>
+                                <small class="text-muted">2026-01-01</small>
+                            </div>
+                            <p class="card-text">
+                                按照指南1.0规定，总经理签署安全与防污染承诺书，现予以公示。
+                                <a href="./notice/总经理安全与防污染承诺书.pdf" target="_blank" class="ms-2">
+                                    [点击查看/下载承诺书]
+                                </a>
+                            </p>
+                        </div>
+                        
+                        <!-- 公示条目2：新规审核发证流程图 -->
+                        <div class="notice-item card p-3 mb-3">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title">新规审核发证流程图</h5>
+                                <small class="text-muted">2026-01-01</small>
+                            </div>
+                            <p class="card-text">
+                                新的审核发证规则涉及审核发证流程变更，制定流程图。
+                                <a href="./notice/新规审核发证流程图.pdf" target="_blank" class="ms-2">
+                                    [点击查看/下载流程图]
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 (已使用您更新后的信息) -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">联系我们</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <h5><i class="bi bi-geo-alt"></i> 地址</h5>
+                    <p>温州市洞头区大门镇保健巷1号</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5><i class="bi bi-telephone"></i> 电话</h5>
+                    <p>业务联系：黄贤特 13777625719</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5><i class="bi bi-envelope"></i> 邮箱</h5>
+                    <p>ejm2018@126.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p class="mb-0">© 2017-2026 浙江恩洁海运有限公司 版权所有 | 国内水路运输经营许可证号：浙温交（港航）XK033</p>
+        </div>
+    </footer>
+
+    <!-- 引入 Bootstrap JS 及其依赖 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <!-- 引入图标库 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+
+    <script>
+        // 1. 定义船舶数据
+        const shipsData = [
+            { name: "恩洁5", grossTon: 15899, deadweight: 24822, power: 4440 },
+            { name: "恩洁7", grossTon: 24919, deadweight: 40014, power: 6480 },
+            { name: "恩洁9", grossTon: 19889, deadweight: 32440, power: 4440 },
+            { name: "恩洁11", grossTon: 29033, deadweight: 47484, power: 6800 },
+            { name: "恩洁15", grossTon: 20747, deadweight: 34568, power: 4770 }
+        ];
+
+        // 2. 动态生成船舶展示卡片
+        const shipListContainer = document.getElementById('shipList');
+        shipsData.forEach(ship => {
+            const shipImagePath = `./picture/${ship.name}照片.jpg`;
+            const shipCard = document.createElement('div');
+            shipCard.className = 'ship-card card mb-4';
+            shipCard.innerHTML = `
+                <div class="card-header bg-white">
+                    <h3 class="card-title mb-0">${ship.name}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- 左侧：船舶参数表格 -->
+                        <div class="col-md-6">
+                            <table class="table table-bordered table-sm">
+                                <tbody>
+                                    <tr><th scope="row">船名</th><td>${ship.name}</td></tr>
+                                    <tr><th scope="row">总吨</th><td>${ship.grossTon.toLocaleString()} 吨</td></tr>
+                                    <tr><th scope="row">载重吨</th><td>${ship.deadweight.toLocaleString()} 吨</td></tr>
+                                    <tr><th scope="row">功率</th><td>${ship.power} kW</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 右侧：图片展示区域 -->
+                        <div class="col-md-6">
+                            <div class="ship-image-container mb-3">
+                                <img 
+                                    src="${shipImagePath}" 
+                                    alt="${ship.name} 船舶照片" 
+                                    class="ship-image" 
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                >
+                                <div class="ship-image-placeholder" style="display:none;">
+                                    <i class="bi bi-image display-4 text-muted d-block mb-2"></i>
+                                    <p class="text-muted">${ship.name} 照片</p>
+                                </div>
+                            </div>
+                            <div class="text-muted text-center">
+                                <small>船舶照片</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            shipListContainer.appendChild(shipCard);
+        });
+    </script>
+</body>
+</html>
